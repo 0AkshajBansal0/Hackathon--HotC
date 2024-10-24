@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        // Function to dynamically set the title based on query parameter
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userType = urlParams.get('type'); // Get the "type" from URL (farmer or producer)
+
+            const titleElement = document.getElementById('title');
+            titleElement.textContent = `${capitalizeFirstLetter(userType)} Signup`;
+
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">Signup</h1> <!-- This title will dynamically change -->
+
+        <form class="signup-form" action="signup" method="POST">
+            <div class="form-group">
+                <input name="name" type="text" id="name" placeholder="full name" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <input name="email" type="email" id="email" placeholder="email" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <input name="password" type="password" id="password" placeholder="password" required autocomplete="off">
+            </div>
+
+            <button type="submit">Sign Up</button>
+            <p style="padding-top: 1rem;">
+                already have an account?
+                <span style="color: #f4f4f9; cursor: pointer;" onclick="window.location.href='signin.html?type=farmer'">
+                    sign in
+                </span>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
